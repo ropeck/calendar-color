@@ -304,7 +304,7 @@ function runTests() {
   });
   
 }
-module.exports = runTests;
+// module.exports = runTests;
 
 function doGet() {
 require('QUnitGS2');
