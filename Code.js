@@ -286,26 +286,32 @@ function getRelativeDate_(daysOffset, hour) {
 
 // Optional for easier use.
 
-function doGet() {
-var QUnit = QUnitGS2.QUnit;
-   QUnitGS2.init(); // Initializes the library.
+function runTests() {
 
    /*
    * Add your test functions here.
    */
 
 
-  QUnit.module('add', function() {
+  QUnit.module('add');
 
-   QUnit.test("another example", function( assert ) {
+  QUnit.test("another example", function( assert ) {
     assert.equal(10, 10);
-   });
-
-   QUnit.test( "Arrays basics", function( assert ) {
-    assert.equal( QUnit.equiv( ['one'], []), true );
-   });
   });
-   QUnit.start(); // Starts running tests, notice QUnit vs QUnitGS2.
+
+  QUnit.test( "Arrays basics", function( assert ) {
+    assert.equal( QUnit.equiv( [], []), true );
+  });
+  
+}
+module.exports = runTests;
+
+function doGet() {
+require('QUnitGS2');
+  var QUnit = QUnitGS2.QUnit;
+  QUnitGS2.init(); // Initializes the library.
+   runTests();
+  QUnit.start(); // Starts running tests, notice QUnit vs QUnitGS2.
    return QUnitGS2.getHtml();
 }
 
